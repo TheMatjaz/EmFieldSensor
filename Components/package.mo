@@ -17,8 +17,10 @@ package Components
     Modelica.Blocks.Interfaces.RealInput gainUsedForNormalization annotation(
       Placement(visible = true, transformation(origin = {-104, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-104, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   equation
-    denormalized = normalized/gainUsedForNormalization;
+    denormalized = normalized; // normalized/gainUsedForNormalization;
   end Denormalizer;
+
+
 
 
 

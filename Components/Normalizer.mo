@@ -13,7 +13,7 @@ model Normalizer
     parameter Real minOutput;
 
 equation
-    normalized = (inputValue - minOutput) / (maxOutput - maxOutput);
+    normalized = inputValue; //(inputValue - minOutput) / (maxOutput - maxOutput);
     gainApplied = normalized/inputValue;
     
 end Normalizer;
