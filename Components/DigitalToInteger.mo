@@ -5,9 +5,9 @@ model DigitalToInteger
     
     import Logic = Modelica.Electrical.Digital.Interfaces.Logic;
     
-    parameter Integer resolutionInBits;
-  
-  Modelica.Electrical.Digital.Interfaces.DigitalInput digitalInput[resolutionInBits] annotation(
+    parameter Integer amountOfBits = 8;
+      
+  Modelica.Electrical.Digital.Interfaces.DigitalInput digitalInput[amountOfBits] annotation(
     Placement(visible = true, transformation(origin = {-98, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-98, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     
   Modelica.Blocks.Interfaces.IntegerOutput integerOutput annotation(
