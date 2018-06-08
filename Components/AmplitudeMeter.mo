@@ -16,7 +16,13 @@ model AmplitudeMeter
     Placement(visible = true, transformation(origin = {-4, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Denormalizer denormalizer annotation(
     Placement(visible = true, transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Math.IntegerToReal integerToReal1 annotation(
+    Placement(visible = true, transformation(origin = {22, 0}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
 equation
+  connect(integerToReal1.y, denormalizer.normalized) annotation(
+    Line(points = {{28, 0}, {38, 0}, {38, 0}, {40, 0}}, color = {0, 0, 127}));
+  connect(analogToInteger.integerOutput, integerToReal1.u) annotation(
+    Line(points = {{6, 0}, {14, 0}, {14, 0}, {14, 0}}, color = {255, 127, 0}));
   connect(normalizer.gainApplied, denormalizer.gainUsedForNormalization) annotation(
     Line(points = {{-42, -2}, {-24, -2}, {-24, -20}, {32, -20}, {32, -4}, {40, -4}, {40, -4}}, color = {0, 0, 127}));
   connect(normalizer.normalized, analogToInteger.voltageToGround) annotation(
