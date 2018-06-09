@@ -1,8 +1,5 @@
-Denormalizer
-Normalizer
 AnalogToInteger
 Antenna
 AmplitudeMeter
-Spectrum
 DigitalToInteger
 ScaleToReference
