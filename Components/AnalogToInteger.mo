@@ -2,8 +2,7 @@ within EmFieldSensor.Components;
 
 model AnalogToInteger
 
-    parameter Real minVoltage;
-    parameter Real maxVoltage;
+    parameter Real referenceVoltage;
     parameter Integer resolutionInBits = 10;
         
   Modelica.Blocks.Interfaces.RealInput voltageToGround annotation(
@@ -14,7 +13,7 @@ model AnalogToInteger
   Modelica.Blocks.Interfaces.IntegerOutput integerOutput annotation(
     Placement(visible = true, transformation(origin = {106, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {106, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     
-  Modelica.Electrical.Analog.Ideal.AD_Converter aD_Converter1(N = resolutionInBits, Rin = 1000, VRefHigh = maxVoltage, VRefLow = minVoltage)  annotation(
+  Modelica.Electrical.Analog.Ideal.AD_Converter aD_Converter1(N = resolutionInBits, Rin = 1000, VRefHigh = referenceVoltage, VRefLow = -referenceVoltage)  annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   DigitalToInteger digitalToInteger1(amountOfBits = resolutionInBits)  annotation(
     Placement(visible = true, transformation(origin = {28, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
