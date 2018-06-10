@@ -23,18 +23,18 @@ model AmplitudeMeter
   Modelica.Blocks.Interfaces.RealOutput sampledField annotation(
     Placement(visible = true, transformation(origin = {106, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {106, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EmFieldSensor.Components.ScaleToReference scaleToReference1(adcMaxVoltage = adcMaxVoltage, resolutionInBits = sampleResolutionInBits)  annotation(
-    Placement(visible = true, transformation(origin = {62, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {64, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Abs abs1 annotation(
     Placement(visible = true, transformation(origin = {-76, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PeakDetector peakDetector1(initialMaximum = 0, outputRefreshFrequency = inputFrequencyHz * 2)  annotation(
-    Placement(visible = true, transformation(origin = {24, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Math.Mean mean1(f = inputFrequencyHz * 2)  annotation(
+    Placement(visible = true, transformation(origin = {28, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(peakDetector1.outputValue, scaleToReference1.adcValue) annotation(
-    Line(points = {{34, 0}, {48, 0}, {48, 0}, {50, 0}}, color = {0, 0, 127}));
-  connect(integerToReal1.y, peakDetector1.inputValue) annotation(
-    Line(points = {{-12, 0}, {12, 0}, {12, 0}, {14, 0}}, color = {0, 0, 127}));
+  connect(mean1.y, scaleToReference1.adcValue) annotation(
+    Line(points = {{39, 0}, {52, 0}}, color = {0, 0, 127}));
   connect(scaleToReference1.scaled, amplitude) annotation(
-    Line(points = {{73, 0}, {106, 0}}, color = {0, 0, 127}));
+    Line(points = {{75, 0}, {106, 0}}, color = {0, 0, 127}));
+  connect(integerToReal1.y, mean1.u) annotation(
+    Line(points = {{-12, 0}, {16, 0}, {16, 0}, {16, 0}}, color = {0, 0, 127}));
   connect(abs1.y, analogToInteger.voltageToGround) annotation(
     Line(points = {{-64, 0}, {-54, 0}, {-54, 0}, {-54, 0}}, color = {0, 0, 127}));
   connect(voltage, abs1.u) annotation(
@@ -45,5 +45,5 @@ equation
     Line(points = {{-33.4, 0}, {-27.4, 0}, {-27.4, 0}, {-25.4, 0}}, color = {255, 127, 0}));
   connect(integerToReal1.y, sampledField) annotation(
     Line(points = {{-11, 0}, {0, 0}, {0, 28}, {106, 28}}, color = {0, 0, 127}));
-annotation(
+  annotation(
     experiment(StartTime = -5e-06, StopTime = 2.5e-05, Tolerance = 1e-06, Interval = 1.5e-07));end AmplitudeMeter;
