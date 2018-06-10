@@ -1,7 +1,7 @@
-AnalogToInteger
-Antenna
-AmplitudeMeter
-DigitalToInteger
-ScaleToReference
 NoisySignal
+Antenna
+DigitalToInteger
+AnalogToInteger
 PeakDetector
+ScaleToReference
+AmplitudeMeter
