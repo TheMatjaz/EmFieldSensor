@@ -1,0 +1,16 @@
+within EmFieldSensor.Components;
+
+model DigitalRectifier
+
+  parameter Real reference = 0;
+
+  Modelica.Blocks.Interfaces.RealInput inputValue annotation(
+    Placement(visible = true, transformation(origin = {-108, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-108, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealOutput outputValue annotation(
+    Placement(visible = true, transformation(origin = {104, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {104, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+
+equation
+
+   outputValue = if inputValue >= reference then reference else reference + abs(inputValue);
+    
+end DigitalRectifier;
