@@ -7,3 +7,6 @@ input oscillating electric or magnetic field (ideally a sine wave)
 into digital format through sampling and quantization. Then with a simple
 integral, it computes the amplitude of each passed semiperiod of the 
 signal.
+
+The code is very basic, without adhering to any coding standards as it
+was only used for an exam.
